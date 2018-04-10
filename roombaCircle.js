@@ -50,11 +50,13 @@ let roombaCircle = commands => {
         for (var times = 0; times < 4; times++) {
             // run each set of instructions 4 times to determine if circle exists
             for (var i = 0; i < str.length; i++) {
+                // if roomba is moving forward, look up new X and Y values:
                 if (str[i] === "G") {
                     y += Ymap[direction];
                     x += Xmap[direction];
                 }
 
+                // if roomba is turning, look up new direction:
                 if (str[i] === "L") {
                     direction = Lmap[direction];
                 }
@@ -63,6 +65,7 @@ let roombaCircle = commands => {
                 }
             }
         }
+        
         if (x === 0 && y === 0 && direction === "N") {
             result.push("YES");
         } else {
