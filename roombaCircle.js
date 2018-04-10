@@ -13,59 +13,64 @@
     Output: ['YES', YES', 'NO', 'YES', 'YES', 'NO']
 */
 
-let roombaCircle = (commands) => {
-    let x = 0, y = 0, direction = 'N', 
-    Rmap = {
-        'N': 'E',
-        'S': 'W',
-        'E': 'S',
-        'W': 'N'
-    },
-    Lmap = {
-        'N': 'W',
-        'S': 'E',
-        'E': 'N',
-        'W': 'S'
-    },
-    result = [];
-    
+let roombaCircle = commands => {
+    let x,
+        y,
+        direction = "N",
+        Rmap = {
+            N: "E",
+            S: "W",
+            E: "S",
+            W: "N"
+        },
+        Lmap = {
+            N: "W",
+            S: "E",
+            E: "N",
+            W: "S"
+        },
+        Ymap = {
+            N: 1,
+            S: -1,
+            E: 0,
+            W: 0
+        },
+        Xmap = {
+            N: 0,
+            S: 0,
+            E: 1,
+            W: -1
+        },
+        result = [];
+
     commands.forEach(str => {
         x = 0;
         y = 0;
-        direction = 'N';
-        for ( var times = 0; times < 4; times++ ) {
-            for ( var i = 0; i < str.length; i++ ) {
-                if ( str[i] === 'G' ) {
-                    if ( direction === 'N' ) {
-                        y++;
-                    }
-                    if ( direction === 'S' ) {
-                        y--;
-                    }
-                    if ( direction === 'E' ) {
-                        x++;
-                    }
-                    if ( direction === 'W' ) {
-                        x--;
-                    }
+        direction = "N";
+        for (var times = 0; times < 4; times++) {
+            // run each set of instructions 4 times to determine if circle exists
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] === "G") {
+                    y += Ymap[direction];
+                    x += Xmap[direction];
                 }
 
-                if ( str[i] === 'L' ) {
+                if (str[i] === "L") {
                     direction = Lmap[direction];
                 }
-                if ( str[i] === 'R' ) {
+                if (str[i] === "R") {
                     direction = Rmap[direction];
                 }
             }
         }
-        if ( x === 0 && y === 0 && direction === 'N' ) {
-            result.push('YES');
+        if (x === 0 && y === 0 && direction === "N") {
+            result.push("YES");
         } else {
-            result.push('NO');
+            result.push("NO");
         }
     });
-    
-    return result;
-}
 
-console.log(roombaCircle(['L', 'RG', 'RGLG', 'GGRR', 'LGRGRGG', 'GGRL']));
+    return result;
+};
+
+console.log(roombaCircle(["L", "RG", "RGLG", "GGRR", "LGRGRGG", "GGRL"]));
