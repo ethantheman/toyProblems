@@ -7,7 +7,7 @@
     'L': turn left
     'G': go forward
     Given an array of strings, each representing sequences of instructions, 
-    determine whether or not the roomba is moving in an infinite circle.
+    determine whether or not the roomba is moving in a circle.
 
     Example Input: ['L', 'RG', 'RGLG', 'GGRR', 'LGRGRGG', 'GGRL']
     Output: ['YES', YES', 'NO', 'YES', 'YES', 'NO']
