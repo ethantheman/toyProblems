@@ -4,22 +4,27 @@
 // your method should return the original string. You can assume the string has only
 // uppercase and lowercase letters (a-z).
 
-let compress = (s) => {
-	let candidate = s[0], temp = s[0], count = 1, result = "";
-	for ( var i = 1; i < s.length; i++ ) {
-		if ( i === s.length - 1 ) {
-			// make sure to count the last run of letters stored in candidate/count
-			if ( s[i] === candidate ) {
+let compress = s => {
+	let candidate = s[0],
+		temp = s[0],
+		count = 1,
+		result = "";
+	for (var i = 1; i < s.length; i++) {
+		if (i === s.length - 1) {
+			// make sure to include the last run of letters stored in candidate/count
+			if (s[i] === candidate) {
 				count++;
 				result += candidate + count.toString();
 			} else {
 				result += candidate + count.toString() + s[i] + 1;
 			}
-		} else if ( s[i] === candidate ) {
+		} else if (s[i] === candidate) {
+			// continue adding to temp
 			count++;
 			temp = candidate + count.toString();
 		} else {
-			result += temp; // 
+			// store temp in result and reset candidate/count.
+			result += temp;
 			count = 1;
 			candidate = s[i];
 			temp = candidate + count.toString();
@@ -27,6 +32,6 @@ let compress = (s) => {
 	}
 
 	return result.length < s.length && result !== "" ? result : s;
-}
+};
 
-console.log(compress("aabcccccaaa") === 'a2b1c5a3');
+console.log(compress("aabcccccaaa") === "a2b1c5a3");
