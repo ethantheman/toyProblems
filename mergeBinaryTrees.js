@@ -11,20 +11,20 @@
 */
 
 let mergeBT = (A, B) => {
-	if ( A !== null && B === null ) {
+	if (A !== null && B === null) {
 		return A;
 	}
-	if ( B !== null && A === null ) {
+	if (B !== null && A === null) {
 		return B;
 	}
 	let newTree = null;
-	if ( A !== null && B !== null ) {
+	if (A !== null && B !== null) {
 		newTree = new BT(A.value + B.value);
 		newTree.left = mergeBT(A.left, B.left);
 		newTree.right = mergeBT(A.right, B.right);
 	}
 	return newTree;
-}
+};
 
 // Test Constructor and Input:
 
@@ -32,7 +32,7 @@ let BT = function(value) {
 	this.value = value;
 	this.right = null;
 	this.left = null;
-}
+};
 
 let A = new BT(4);
 A.left = new BT(3);
