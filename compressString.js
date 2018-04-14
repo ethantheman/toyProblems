@@ -16,7 +16,7 @@ let compress = s => {
 				count++;
 				result += candidate + count.toString();
 			} else {
-				result += candidate + count.toString() + s[i] + 1;
+				result += candidate + count.toString() + s[i] + 1; // last letter in string is alone
 			}
 		} else if (s[i] === candidate) {
 			// continue adding to temp

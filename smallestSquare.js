@@ -14,8 +14,7 @@
 */
 
 let smallestSquare = (x, y, k) => {
-	let a = buildPoints(x, y);
-	let d = {}; // storage to hold distances
+	let a = buildPoints(x, y), d = {}; // storage to hold distances
 	for ( var i = 0; i < a.length; i++ ) {
 		// values in d will hold indices of pts sorted by distance from key (closest first).
 		d[i] = []; 
@@ -31,6 +30,7 @@ let smallestSquare = (x, y, k) => {
 		});
 	}
 	console.log('d: ', d);
+
 	return 0;
 }
 
